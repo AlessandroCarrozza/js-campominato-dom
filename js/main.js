@@ -19,7 +19,7 @@ btnPlayDom.addEventListener("click" , function () {
 
         console.log(bombList);
 
-        
+
         
 
 });
@@ -62,6 +62,7 @@ function generatePlayground (cellNumber, cellPerSide) {
         const currentCell = createCells(cellPerSide, i);
         currentCell.addEventListener("click" , function () {
             this.classList.toggle("clicked");
+            console.log(i);
         });
         
         gridDom.append(currentCell);
