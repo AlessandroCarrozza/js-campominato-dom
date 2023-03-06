@@ -64,6 +64,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 #grid{
@@ -86,6 +87,12 @@ main{
 
 .clicked-bomb{
     background-color: red;
+}
+
+main h1{
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
 }
 
 /* fine main */

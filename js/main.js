@@ -3,8 +3,11 @@
 const btnPlayDom = document.getElementById("btn-play");
 const levelDom = document.getElementById("level");
 const gridDom = document.getElementById("grid");
+let pointsDom = document.getElementById("points");
 
 let bombList = [];
+
+let punteggio = 1;
 
 btnPlayDom.addEventListener("click" , function () {
 
@@ -29,6 +32,9 @@ btnPlayDom.addEventListener("click" , function () {
 // function per impostare il numero di celle in base al livello selezionato
 function createNewGame (level) {
 
+    punteggio = 1;
+    pointsDom.innerHTML = 0;
+
     let cells;
     let cellPerSide;
 
@@ -52,19 +58,20 @@ function createNewGame (level) {
 }
 
 
-
 // function per la generazione delle celle
 function generatePlayground (cellNumber, cellPerSide) {
 
     gridDom.innerHTML = "";
+    
 
     for (let i = 1; i <= cellNumber; i++) {
         const currentCell = createCells(cellPerSide, i);
         currentCell.addEventListener("click" , function () {
             if (bombList.includes(i)) {
-                this.classList.toggle("clicked-bomb");
+                this.classList.add("clicked-bomb");
             } else {
-                this.classList.toggle("clicked");
+                this.classList.add("clicked");
+                pointsDom.innerHTML = punteggio++;
             }
             console.log(i);
         });
@@ -72,7 +79,6 @@ function generatePlayground (cellNumber, cellPerSide) {
         gridDom.append(currentCell);
     }
 }
-
 
 
 // function per la creazione dell'elemento cella
@@ -85,6 +91,7 @@ function createCells (cellPerSide, number) {
     return cell;
    
 }
+
 
 // functions per generare un numero casuale unico
 function generateUniqueRandomNumber(blacklist, min, max) {
