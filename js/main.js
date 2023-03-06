@@ -5,15 +5,20 @@ const levelDom = document.getElementById("level");
 const gridDom = document.getElementById("grid");
 const titlePointsDom = document.getElementById("title-points");
 const titleLevelDom = document.getElementById("title-level");
-let pointsDom = document.getElementById("points");
 
 
-
+// variabili globali
 let bombList = [];
+let gameOver = false;
+let cells;
+let punteggio = 0;
 
-let punteggio = 1;
 
 btnPlayDom.addEventListener("click" , function () {
+
+        titlePointsDom.innerHTML = `Punteggio: ${punteggio}`;
+
+        gameOver = false;
 
         titleLevelDom.classList.add("d-none");
         titlePointsDom.classList.remove("d-none");
@@ -25,11 +30,12 @@ btnPlayDom.addEventListener("click" , function () {
 
         for (let i = 1; i <= 16; i++) {
 
-            const newValidRandomNumber = generateUniqueRandomNumber(bombList, 1, 100);
+            const newValidRandomNumber = generateUniqueRandomNumber(bombList, 1, cells);
             bombList.push(newValidRandomNumber);
         }
 
         console.log(bombList);
+
 
 });
 
@@ -37,11 +43,8 @@ btnPlayDom.addEventListener("click" , function () {
 
 // function per impostare il numero di celle in base al livello selezionato
 function createNewGame (level) {
-
-    punteggio = 1;
-    pointsDom.innerHTML = 0;
-
-    let cells;
+    punteggio = 0;
+    
     let cellPerSide;
 
     switch (level) {
@@ -60,12 +63,12 @@ function createNewGame (level) {
 
     cellPerSide = Math.sqrt(cells);
 
-    generatePlayground(cells, cellPerSide);
+    generatePlayground(cells, cellPerSide, punteggio);
 }
 
 
 // function per la generazione delle celle
-function generatePlayground (cellNumber, cellPerSide) {
+function generatePlayground (cellNumber, cellPerSide, points) {
 
     gridDom.innerHTML = "";
     
@@ -73,16 +76,19 @@ function generatePlayground (cellNumber, cellPerSide) {
     for (let i = 1; i <= cellNumber; i++) {
         const currentCell = createCells(cellPerSide, i);
         currentCell.addEventListener("click" , function () {
-            if (bombList.includes(i)) {
-                this.classList.add("clicked-bomb");
-                
-            } else {
-                this.classList.add("clicked");
-                pointsDom.innerHTML = punteggio++;
+            if (gameOver == false) {
+                if (bombList.includes(i)) {
+                    gameOver = true;
+                    this.classList.add("clicked-bomb");
+                    titlePointsDom.innerHTML = `Hai perso con un punteggio di: ${points}`;               
+                } else {
+                    ++points;
+                    titlePointsDom.innerHTML = `Punteggio: ${points}`;
+                    this.classList.add("clicked");                   
+                }
+                console.log(i);
             }
-            console.log(i);
         });
-        
         gridDom.append(currentCell);
     }
 }
