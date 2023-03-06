@@ -1,0 +1,103 @@
+
+/* UTILITY */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+
+
+/* -------- CODE -------- */  
+
+/* inizio header */
+header{
+    height: 100px;
+    padding: 15px 20px;
+}
+
+header .container{
+    height: 70px;
+    max-width: 1170px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-name{
+    display: flex;
+    align-items: center;
+}
+
+.logo-name h1{
+    font-size: 40px;
+}
+
+.logo-name img{
+    height: 90px;
+}
+
+.start-game button{
+    height: 25px;
+    padding: 2px 30px;
+}
+
+.start-game select{
+    width: 180px;
+    height: 25px;
+    background-color: #efefef;
+}
+
+.start-game *{
+    display: inline-block;
+}
+/* fine header */
+
+
+
+/* inizio main */
+main{
+    height: calc(100vh - 100px - 80px);
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#grid{
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.square{
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clicked{
+    background-color: coral;
+}
+
+/* fine main */
+
+
+
+/* inizio footer */
+footer{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .container{
+    width: 1170px;
+    padding: 0 20px;
+}
+/* fine footer */

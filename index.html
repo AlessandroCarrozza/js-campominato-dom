@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Griglia Campo Minato</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <!-- inizio header -->
+    <header>
+        <div class="container">
+            <div class="logo-name">
+                <img src="img/logo.png" alt="Boolean Logo">
+
+                <h1>Campo Minato</h1>
+            </div>
+
+
+            <div class="start-game">
+
+                <label for="difficulty-level">Difficoltà: </label>
+                <select name="difficulty" id="level">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <button id="btn-play">Play</button>
+            </div>
+        </div>
+    </header>
+    <!-- fine header -->
+
+
+    <!-- inizio main -->
+    <main>
+        <div id="grid" class="d-none">
+            <!-- <div class="square"></div> -->
+        </div>
+    </main>
+    <!-- fine main -->
+
+
+    <!-- inizio footer -->
+    <footer>
+        <div class="container">
+            Made with &#x2764; by Alessandro
+        </div>
+    </footer>
+    <!-- fine footer -->
+
+    
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
