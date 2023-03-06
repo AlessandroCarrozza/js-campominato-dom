@@ -4,12 +4,23 @@ const btnPlayDom = document.getElementById("btn-play");
 const levelDom = document.getElementById("level");
 const gridDom = document.getElementById("grid");
 
-
+const bombList = [];
 
 btnPlayDom.addEventListener("click" , function () {
 
         const level = levelDom.value;
         createNewGame(level);
+
+        for (let i = 1; i <= 16; i++) {
+
+            const newValidRandomNumber = generateUniqueRandomNumber(bombList, 1, 100);
+            bombList.push(newValidRandomNumber);
+        }
+
+        console.log(bombList);
+
+        
+        
 
 });
 
@@ -68,4 +79,27 @@ function createCells (cellPerSide, number) {
     cell.innerHTML = `<div class = "cell-number">${number}</div>`;
     return cell;
    
+}
+
+// functions per generare un numero casuale unico
+function generateUniqueRandomNumber(blacklist, min, max) {
+
+    let isValidNumber = false;
+    let randomNumber;
+
+    while (!isValidNumber) {
+        randomNumber = generateRandomNumber(min, max);
+        if (!blacklist.includes(randomNumber)) {
+            isValidNumber = true;
+        }
+    }
+
+    return randomNumber;
+
+}
+
+
+function generateRandomNumber(min, max) {
+    const number = Math.floor(Math.random() * (max - min + 1)) + min;
+    return number;
 }
