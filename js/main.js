@@ -5,7 +5,7 @@ const levelDom = document.getElementById("level");
 const gridDom = document.getElementById("grid");
 const titlePointsDom = document.getElementById("title-points");
 const titleLevelDom = document.getElementById("title-level");
-
+let allElementsList = document.getElementsByClassName("square");
 
 // variabili globali
 let bombList = [];
@@ -33,6 +33,7 @@ btnPlayDom.addEventListener("click" , function () {
             const newValidRandomNumber = generateUniqueRandomNumber(bombList, 1, cells);
             bombList.push(newValidRandomNumber);
         }
+
 
         console.log(bombList);
 
@@ -74,13 +75,19 @@ function generatePlayground (cellNumber, cellPerSide, points) {
     
 
     for (let i = 1; i <= cellNumber; i++) {
-        const currentCell = createCells(cellPerSide, i);
+        let currentCell = createCells(cellPerSide, i);
         currentCell.addEventListener("click" , function () {
             if (gameOver == false) {
                 if (bombList.includes(i)) {
                     gameOver = true;
                     this.classList.add("clicked-bomb");
-                    titlePointsDom.innerHTML = `Hai perso con un punteggio di: ${points}`;               
+                    titlePointsDom.innerHTML = `Hai perso con un punteggio di: ${points}`;
+                    for (let i = 0; i < bombList.length; i++) {
+                        
+                        currentCell = bombList[i] - 1;
+                        allElementsList[currentCell].classList.add("clicked-bomb");
+                        
+                    }               
                 } else {
                     ++points;
                     titlePointsDom.innerHTML = `Punteggio: ${points}`;
