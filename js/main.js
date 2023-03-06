@@ -4,12 +4,14 @@ const btnPlayDom = document.getElementById("btn-play");
 const levelDom = document.getElementById("level");
 const gridDom = document.getElementById("grid");
 
-const bombList = [];
+let bombList = [];
 
 btnPlayDom.addEventListener("click" , function () {
 
         const level = levelDom.value;
         createNewGame(level);
+
+        bombList = [];
 
         for (let i = 1; i <= 16; i++) {
 
