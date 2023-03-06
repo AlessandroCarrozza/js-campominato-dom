@@ -75,6 +75,7 @@ function generatePlayground (cellNumber, cellPerSide) {
         currentCell.addEventListener("click" , function () {
             if (bombList.includes(i)) {
                 this.classList.add("clicked-bomb");
+                
             } else {
                 this.classList.add("clicked");
                 pointsDom.innerHTML = punteggio++;
@@ -93,10 +94,11 @@ function createCells (cellPerSide, number) {
     cell.classList.add("square");
     cell.style.width = `calc(100% / ${cellPerSide})`;
     cell.style.height = `calc(100% / ${cellPerSide})`;
-    cell.innerHTML = `<div class = "cell-number">${number}</div>`;
+    cell.innerHTML = `<div>${number}</div>`;
     return cell;
    
 }
+
 
 
 // functions per generare un numero casuale unico
