@@ -20,8 +20,6 @@ btnPlayDom.addEventListener("click" , function () {
         console.log(bombList);
 
 
-        
-
 });
 
 
@@ -61,7 +59,11 @@ function generatePlayground (cellNumber, cellPerSide) {
     for (let i = 1; i <= cellNumber; i++) {
         const currentCell = createCells(cellPerSide, i);
         currentCell.addEventListener("click" , function () {
-            this.classList.toggle("clicked");
+            if (bombList.includes(i)) {
+                this.classList.toggle("clicked-bomb");
+            } else {
+                this.classList.toggle("clicked");
+            }
             console.log(i);
         });
         
@@ -104,3 +106,4 @@ function generateRandomNumber(min, max) {
     const number = Math.floor(Math.random() * (max - min + 1)) + min;
     return number;
 }
+
