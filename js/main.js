@@ -3,13 +3,20 @@
 const btnPlayDom = document.getElementById("btn-play");
 const levelDom = document.getElementById("level");
 const gridDom = document.getElementById("grid");
+const titlePointsDom = document.getElementById("title-points");
+const titleLevelDom = document.getElementById("title-level");
 let pointsDom = document.getElementById("points");
+
+
 
 let bombList = [];
 
 let punteggio = 1;
 
 btnPlayDom.addEventListener("click" , function () {
+
+        titleLevelDom.classList.add("d-none");
+        titlePointsDom.classList.remove("d-none");
 
         const level = levelDom.value;
         createNewGame(level);
@@ -23,7 +30,6 @@ btnPlayDom.addEventListener("click" , function () {
         }
 
         console.log(bombList);
-
 
 });
 
@@ -109,7 +115,6 @@ function generateUniqueRandomNumber(blacklist, min, max) {
     return randomNumber;
 
 }
-
 
 function generateRandomNumber(min, max) {
     const number = Math.floor(Math.random() * (max - min + 1)) + min;

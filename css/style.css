@@ -7,7 +7,9 @@
     font-family: sans-serif;
 }
 
-
+.d-none{
+    display: none;
+}
 
 /* -------- CODE -------- */  
 
@@ -89,11 +91,17 @@ main{
     background-color: red;
 }
 
-main h1{
+main #title-points{
     padding: 10px 0;
     position: absolute;
     bottom: 0;
 }
+
+main #title-level{
+    padding: 10px 0;
+    position: absolute;
+}
+
 
 /* fine main */
 
