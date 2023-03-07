@@ -72,7 +72,7 @@ function createNewGame (level) {
 function generatePlayground (cellNumber, cellPerSide, points) {
 
     gridDom.innerHTML = "";
-    
+    celleUscite = [];
 
     for (let i = 1; i <= cellNumber; i++) {
         let currentCell = createCells(cellPerSide, i);
@@ -81,7 +81,7 @@ function generatePlayground (cellNumber, cellPerSide, points) {
                 if (bombList.includes(i)) {
                     gameOver = true;
                     this.classList.add("clicked-bomb");
-                    titlePointsDom.innerHTML = `Hai perso con un punteggio di: ${points}`;
+                    titlePointsDom.innerHTML = `Hai perso con un punteggio di: ${celleUscite.length}`;
                     for (let i = 0; i < bombList.length; i++) {
                         
                         currentCell = bombList[i] - 1;
@@ -89,9 +89,12 @@ function generatePlayground (cellNumber, cellPerSide, points) {
                         
                     }               
                 } else {
-                    ++points;
-                    titlePointsDom.innerHTML = `Punteggio: ${points}`;
-                    this.classList.add("clicked");                   
+                    if (!celleUscite.includes(i)) {
+                        celleUscite.push(i);
+                    }  
+                    titlePointsDom.innerHTML = `Punteggio: ${celleUscite.length}`;
+                    this.classList.add("clicked");
+                                
                 }
                 console.log(i);
             }
